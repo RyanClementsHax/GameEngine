@@ -25,7 +25,7 @@ namespace GameEngine {
 		float m_MouseX, m_MouseY;
 	};
 
-	class HAZEL_API MouseScrolledEvent : public Event
+	class GAME_ENGINE_API MouseScrolledEvent : public Event
 	{
 	public:
 		MouseScrolledEvent(float xOffset, float yOffset)
