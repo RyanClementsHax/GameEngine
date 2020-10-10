@@ -3,6 +3,7 @@
 #include "Event.h"
 
 namespace GameEngine {
+
 	class GAME_ENGINE_API KeyEvent : public Event
 	{
 	public:
