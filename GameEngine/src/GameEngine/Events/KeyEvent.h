@@ -52,4 +52,20 @@ namespace GameEngine {
 		EVENT_CLASS_TYPE(KeyReleased)
 	};
 
+	class GAME_ENGINE_API KeyTypedEvent : public KeyEvent
+	{
+	public:
+		KeyTypedEvent(int keyCode)
+			: KeyEvent(keyCode) {}
+
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "KeyPressedEvent: " << m_KeyCode;
+			return ss.str();
+		}
+
+		EVENT_CLASS_TYPE(KeyTyped)
+	};
+
 }
