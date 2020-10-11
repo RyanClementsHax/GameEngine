@@ -43,7 +43,7 @@ project "GameEngine"
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
-		"%{prj.name}/vendor/glm/glm/**.inl"
+		"%{prj.name}/vendor/glm/glm/**.inl",
 	}
 
 	includedirs
@@ -114,6 +114,7 @@ project "Sandbox"
 	{
 		"GameEngine/vendor/spdlog/include",
 		"GameEngine/src",
+		"GameEngine/vendor",
 		"%{IncludeDir.glm}"
 	}
 
