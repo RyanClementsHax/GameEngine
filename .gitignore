@@ -1,9 +1,9 @@
 # Binaries
-**/bin/
-!vendor/bin/premake
+**/bin/**
+!vendor/bin/**
 bin-int/
 
-# Hazel files
+# GameEngine files
 *.log
 
 # Visual Studio files and folder
