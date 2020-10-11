@@ -1,6 +1,6 @@
 #include <GameEngine.h>
 
-// #include "imgui/imgui.h"
+#include "imgui/imgui.h"
 
 class ExampleLayer : public GameEngine::Layer
 {
@@ -18,10 +18,9 @@ public:
 
 	virtual void OnImGuiRender() override
 	{
-		//// we want to do this, but can't rn
-		//ImGui::Begin("Test");
-		//ImGui::Text("Hello World");
-		//ImGui::End();
+		ImGui::Begin("Test");
+		ImGui::Text("Hello World");
+		ImGui::End();
 	}
 
 	void OnEvent(GameEngine::Event& event) override
