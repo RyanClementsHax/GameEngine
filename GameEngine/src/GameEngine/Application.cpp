@@ -3,7 +3,7 @@
 
 #include "GameEngine/Log.h"
 
-#include <glad/glad.h>
+#include "GameEngine/Renderer/Renderer.h"
 
 #include "Input.h"
 
@@ -24,6 +24,7 @@ namespace GameEngine {
 		PushOverlay(m_ImGuiLayer);
 
 		m_VertexArray.reset(VertexArray::Create());
+		m_SquareVA.reset(VertexArray::Create());
 
 		float vertices[3 * 7] = {
 			-0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
@@ -45,7 +46,6 @@ namespace GameEngine {
 		indexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
-		m_SquareVA.reset(VertexArray::Create());
 
 		float squareVertices[3 * 4] = {
 			-0.75f, -0.75f, 0.0f,
@@ -157,18 +157,19 @@ namespace GameEngine {
 	{
 		while (m_Running)
 		{
-			glClearColor(0.1f, 0.1f, 0.1f, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
+			RendererCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
+			RendererCommand::Clear();
+
+			Renderer::BeginScene();
 
 			m_BlueShader->Bind();
-			m_SquareVA->Bind();
 
-			glDrawElements(GL_TRIANGLES, m_SquareVA->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+			Renderer::Submit(m_SquareVA);
 
 			m_Shader->Bind();
-			m_VertexArray->Bind();
+			Renderer::Submit(m_VertexArray);
 
-			glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+			Renderer::EndScene();
 
 
 			for (Layer* layer : m_LayerStack)
