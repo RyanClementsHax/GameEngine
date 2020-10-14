@@ -7,12 +7,9 @@
 #include "GameEngine/Events/Event.h"
 #include "GameEngine/Events/ApplicationEvent.h"
 
-#include "GameEngine/ImGui/ImGuiLayer.h"
+#include "GameEngine/Core/Timestep.h"
 
-#include "GameEngine/Renderer/Shader.h"
-#include "GameEngine/Renderer/Buffer.h"
-#include "GameEngine/Renderer/VertexArray.h"
-#include "GameEngine/Renderer/OrthographicCamera.h"
+#include "GameEngine/ImGui/ImGuiLayer.h"
 
 namespace GameEngine {
 
@@ -34,19 +31,12 @@ namespace GameEngine {
 		inline static Application& Get() { return *s_Instance; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
-
+	private:
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
-
-		std::shared_ptr<Shader> m_Shader;
-		std::shared_ptr<VertexArray> m_VertexArray;
-
-		std::shared_ptr<Shader> m_BlueShader;
-		std::shared_ptr<VertexArray> m_SquareVA;
-
-		OrthographicCamera m_Camera;
+		float m_LastTimeFrame = 0.0f;
 	private:
 		static Application* s_Instance;
 	};
