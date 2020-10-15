@@ -41,7 +41,7 @@ namespace GameEngine {
 		glBindVertexArray(m_RendererID);
 	}
 
-	void OpenGLVertexArray::UnBind() const
+	void OpenGLVertexArray::Unbind() const
 	{
 		glBindVertexArray(0);
 	}
