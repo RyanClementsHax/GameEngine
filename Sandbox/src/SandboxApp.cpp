@@ -21,7 +21,7 @@ public:
 			 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f
 		};
 
-		std::shared_ptr<GameEngine::VertexBuffer> vertexBuffer;
+		GameEngine::Ref<GameEngine::VertexBuffer> vertexBuffer;
 		vertexBuffer.reset(GameEngine::VertexBuffer::Create(vertices, sizeof(vertices)));
 		GameEngine::BufferLayout layout = {
 			{ GameEngine::ShaderDataType::Float3, "a_Position" },
@@ -31,7 +31,7 @@ public:
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		unsigned int indices[3] = { 0, 1, 2 };
-		std::shared_ptr<GameEngine::IndexBuffer> indexBuffer;
+		GameEngine::Ref<GameEngine::IndexBuffer> indexBuffer;
 		indexBuffer.reset(GameEngine::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
@@ -44,7 +44,7 @@ public:
 			-0.5f,  0.5f, 0.0f
 		};
 
-		std::shared_ptr<GameEngine::VertexBuffer> squareVB;
+		GameEngine::Ref<GameEngine::VertexBuffer> squareVB;
 		squareVB.reset(GameEngine::VertexBuffer::Create(squareVertices, sizeof(vertices)));
 		squareVB->SetLayout({
 			{ GameEngine::ShaderDataType::Float3, "a_Position" },
@@ -52,7 +52,7 @@ public:
 		m_SquareVA->AddVertexBuffer(squareVB);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr<GameEngine::IndexBuffer> squareIB;
+		GameEngine::Ref<GameEngine::IndexBuffer> squareIB;
 		squareIB.reset(GameEngine::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
@@ -185,11 +185,11 @@ public:
 	}
 
 	private:
-		std::shared_ptr<GameEngine::Shader> m_Shader;
-		std::shared_ptr<GameEngine::VertexArray> m_VertexArray;
+		GameEngine::Ref<GameEngine::Shader> m_Shader;
+		GameEngine::Ref<GameEngine::VertexArray> m_VertexArray;
 
-		std::shared_ptr<GameEngine::Shader> m_FlatColorShader;
-		std::shared_ptr<GameEngine::VertexArray> m_SquareVA;
+		GameEngine::Ref<GameEngine::Shader> m_FlatColorShader;
+		GameEngine::Ref<GameEngine::VertexArray> m_SquareVA;
 
 		GameEngine::OrthographicCamera m_Camera;
 		glm::vec3 m_CameraPosition;
