@@ -18,7 +18,7 @@ namespace GameEngine {
 		else if (GameEngine::Input::IsKeyPressed(GE_KEY_D))
 			m_CameraPosition.x += m_CameraTranslationSpeed * ts;
 
-		if (GameEngine::Input::IsKeyPressed(GE_KEY_D))
+		if (GameEngine::Input::IsKeyPressed(GE_KEY_W))
 			m_CameraPosition.y += m_CameraTranslationSpeed * ts;
 		else if (GameEngine::Input::IsKeyPressed(GE_KEY_S))
 			m_CameraPosition.y -= m_CameraTranslationSpeed * ts;
