@@ -18,4 +18,4 @@ You can clone the repository to a local destination using git:
 
 Make sure that you do a `--recursive` clone to fetch all of the submodules!
 
-Then run GenerateProject.bat to generate project/solution files so this can be opened and built in VS2019
+Then run scripts/Win-GenProjects.bat to generate project/solution files so this can be opened and built in VS2019
