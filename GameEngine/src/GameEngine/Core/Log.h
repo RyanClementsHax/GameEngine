@@ -28,4 +28,4 @@ namespace GameEngine {
 #define GE_INFO(...)			::GameEngine::Log::GetClientLogger()->info(__VA_ARGS__)
 #define GE_WARN(...)			::GameEngine::Log::GetClientLogger()->warn(__VA_ARGS__)
 #define GE_ERROR(...)			::GameEngine::Log::GetClientLogger()->error(__VA_ARGS__)
-#define GE_FATAL(...)			::GameEngine::Log::GetClientLogger()->critical(__VA_ARGS__)
+#define GE_CRITICAL(...)			::GameEngine::Log::GetClientLogger()->critical(__VA_ARGS__)

@@ -42,21 +42,21 @@ namespace GameEngine {
 		Add(name, shader);
 	}
 
-	GameEngine::Ref<GameEngine::Shader> ShaderLibrary::Load(const std::string& filepath)
+	Ref<Shader> ShaderLibrary::Load(const std::string& filepath)
 	{
 		auto shader = Shader::Create(filepath);
 		Add(shader);
 		return shader;
 	}
 
-	GameEngine::Ref<GameEngine::Shader> ShaderLibrary::Load(const std::string& name, const std::string& filepath)
+	Ref<Shader> ShaderLibrary::Load(const std::string& name, const std::string& filepath)
 	{
 		auto shader = Shader::Create(filepath);
 		Add(name, shader);
 		return shader;
 	}
 
-	GameEngine::Ref<GameEngine::Shader> ShaderLibrary::Get(const std::string& name)
+	Ref<Shader> ShaderLibrary::Get(const std::string& name)
 	{
 		GE_CORE_ASSERT(Exists(name), "Shader not found!");
 		return m_Shaders[name];
