@@ -1,14 +1,14 @@
 #pragma once
 
 #include "GameEngine/Core/Core.h"
-#include "Layer.h"
+#include "GameEngine/Core/Layer.h"
 
 namespace GameEngine {
 
-	class GAME_ENGINE_API LayerStack
+	class LayerStack
 	{
 	public:
-		LayerStack();
+		LayerStack() = default;
 		~LayerStack();
 
 		void PushLayer(Layer* layer);

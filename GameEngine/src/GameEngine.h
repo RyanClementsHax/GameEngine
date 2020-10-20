@@ -2,6 +2,8 @@
 
 // For use by Game Engine applications
 
+#include "GameEngine/Core/Core.h"
+
 #include "GameEngine/Core/Application.h"
 #include "GameEngine/Core/Layer.h"
 #include "GameEngine/Core/Log.h"

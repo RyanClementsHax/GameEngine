@@ -4,7 +4,7 @@
 
 namespace GameEngine {
 
-	class GAME_ENGINE_API Input
+	class Input
 	{
 	protected:
 		Input() = default;

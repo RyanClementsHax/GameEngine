@@ -1,5 +1,5 @@
 #include "gepch.h"
-#include "WindowsInput.h"
+#include "Platform/Windows/WindowsInput.h"
 
 #include "GameEngine/Core/Application.h"
 #include <GLFW/glfw3.h>

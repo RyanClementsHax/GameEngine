@@ -1,9 +1,9 @@
 #include "gepch.h"
-#include "Renderer2D.h"
+#include "GameEngine/Renderer/Renderer2D.h"
 
-#include "VertexArray.h"
-#include "Shader.h"
-#include "RendererCommand.h"
+#include "GameEngine/Renderer/VertexArray.h"
+#include "GameEngine/Renderer/Shader.h"
+#include "GameEngine/Renderer/RendererCommand.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 
@@ -30,8 +30,7 @@ namespace GameEngine {
 			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 		};
 
-		GameEngine::Ref<GameEngine::VertexBuffer> squareVB;
-		squareVB.reset(GameEngine::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+		GameEngine::Ref<GameEngine::VertexBuffer> squareVB = GameEngine::VertexBuffer::Create(squareVertices, sizeof(squareVertices));
 		squareVB->SetLayout({
 			{ GameEngine::ShaderDataType::Float3, "a_Position" },
 			{ GameEngine::ShaderDataType::Float2, "a_TexCoord" }
@@ -39,8 +38,7 @@ namespace GameEngine {
 		s_Data->QuadVertexArray->AddVertexBuffer(squareVB);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		GameEngine::Ref<GameEngine::IndexBuffer> squareIB;
-		squareIB.reset(GameEngine::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
+		GameEngine::Ref<GameEngine::IndexBuffer> squareIB = GameEngine::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
 		s_Data->QuadVertexArray->SetIndexBuffer(squareIB);
 
 		s_Data->WhiteTexture = Texture2D::Create(1, 1);

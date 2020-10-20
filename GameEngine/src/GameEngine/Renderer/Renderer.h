@@ -1,9 +1,9 @@
 #pragma once
 
-#include "RendererCommand.h"
+#include "GameEngine/Renderer/RendererCommand.h"
 
-#include "OrthographicCamera.h"
-#include "Shader.h"
+#include "GameEngine/Renderer/OrthographicCamera.h"
+#include "GameEngine/Renderer/Shader.h"
 
 namespace GameEngine {
 
@@ -11,6 +11,8 @@ namespace GameEngine {
 	{
 	public:
 		static void Init();
+		static void Shutdown();
+
 		static void OnWindowResize(uint32_t width, uint32_t height);
 
 		static void BeginScene(OrthographicCamera& camera);

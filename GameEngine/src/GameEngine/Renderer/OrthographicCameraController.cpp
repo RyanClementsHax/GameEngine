@@ -1,5 +1,5 @@
 #include "gepch.h"
-#include "OrthographicCameraController.h"
+#include "GameEngine/Renderer/OrthographicCameraController.h"
 
 #include "GameEngine/Core/Input.h"
 #include "GameEngine/Core/KeyCodes.h"

@@ -43,21 +43,6 @@
 	#error "Unknown platform!"
 #endif // End of platform detection
 
-// DLL support
-#ifdef GE_PLATFORM_WINDOWS
-#if GE_DYNAMIC_LINK
-	#ifdef GE_BUILD_DLL
-		#define GAME_ENGINE_API __declspec(dllexport)
-	#else
-		#define GAME_ENGINE_API __declspec(dllimport)
-	#endif
-#else
-	#define GAME_ENGINE_API
-#endif
-#else
-	#error Game Engine only supports Windows!
-#endif // End of DLL support
-
 #ifdef GE_DEBUG
 	#define GE_ENABLE_ASSERTS
 #endif

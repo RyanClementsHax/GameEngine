@@ -1,6 +1,7 @@
 #pragma once
 
 #include "gepch.h"
+
 #include "GameEngine/Core/Core.h"
 
 
@@ -47,7 +48,7 @@ namespace GameEngine {
 
 #define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
 	
-	class GAME_ENGINE_API Event
+	class Event
 	{
 	public:
 		bool Handled = false;

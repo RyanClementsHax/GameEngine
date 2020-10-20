@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Core.h"
+#include "GameEngine/Core/Core.h"
 
-#include "Window.h"
+#include "GameEngine/Core/Window.h"
 #include "GameEngine/Core/LayerStack.h"
 #include "GameEngine/Events/Event.h"
 #include "GameEngine/Events/ApplicationEvent.h"
@@ -13,11 +13,11 @@
 
 namespace GameEngine {
 
-	class GAME_ENGINE_API Application
+	class Application
 	{
 	public:
 		Application();
-		virtual ~Application() = default;
+		virtual ~Application();
 
 		void Run();
 
