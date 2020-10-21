@@ -15,6 +15,8 @@ namespace GameEngine {
 
 	Application::Application()
 	{
+		GE_PROFILE_FUNCTION();
+
 		GE_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 		m_Window = Window::Create();
@@ -28,21 +30,29 @@ namespace GameEngine {
 
 	Application::~Application()
 	{
+		GE_PROFILE_FUNCTION();
+
 		Renderer::Shutdown();
 	}
 
 	void Application::PushLayer(Layer* layer)
 	{
 		m_LayerStack.PushLayer(layer);
+		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(Layer* overlay)
 	{
+		GE_PROFILE_FUNCTION();
+
 		m_LayerStack.PushOverlay(overlay);
+		overlay->OnAttach();
 	}
 
 	void Application::OnEvent(Event& e)
 	{
+		GE_PROFILE_FUNCTION();
+
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(GE_BIND_EVENT_FN(Application::OnWindowClose));
 		dispatcher.Dispatch<WindowResizeEvent>(GE_BIND_EVENT_FN(Application::OnWindowResize));
@@ -57,22 +67,34 @@ namespace GameEngine {
 
 	void Application::Run()
 	{
+		GE_PROFILE_FUNCTION();
+
 		while (m_Running)
 		{
+			GE_PROFILE_SCOPE("RunLoop");
+
 			float time = (float)glfwGetTime();
 			Timestep timestep = time - m_LastTimeFrame;
 			m_LastTimeFrame = time;
 
 			if (!m_Minimized)
 			{
-				for (Layer* layer : m_LayerStack)
-					layer->OnUpdate(timestep);
-			}
+				{
+					GE_PROFILE_SCOPE("LayerStack OnUpdate");
 
-			m_ImGuiLayer->Begin();
-			for (Layer* layer : m_LayerStack)
-				layer->OnImGuiRender();
-			m_ImGuiLayer->End();
+					for (Layer* layer : m_LayerStack)
+						layer->OnUpdate(timestep);
+				}
+
+				m_ImGuiLayer->Begin();
+				{
+					GE_PROFILE_SCOPE("LayerStack ImGuiRenderer");
+
+					for (Layer* layer : m_LayerStack)
+						layer->OnImGuiRender();
+				}
+				m_ImGuiLayer->End();
+			}
 
 			m_Window->OnUpdate();
 		}
@@ -86,6 +108,8 @@ namespace GameEngine {
 
 	bool Application::OnWindowResize(WindowResizeEvent& e)
 	{
+		GE_PROFILE_FUNCTION();
+
 		if (e.GetWidth() == 0 || e.GetHeight() == 0)
 		{
 			m_Minimized = true;

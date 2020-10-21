@@ -13,11 +13,14 @@ Sandbox2D::Sandbox2D()
 
 void Sandbox2D::OnAttach()
 {
+	GE_PROFILE_FUNCTION();
+
 	m_CheckerboardTexture = GameEngine::Texture2D::Create("assets/textures/Checkerboard.png");
 }
 
 void Sandbox2D::OnDetach()
 {
+	GE_PROFILE_FUNCTION();
 }
 
 void Sandbox2D::OnUpdate(GameEngine::Timestep ts)
@@ -25,10 +28,7 @@ void Sandbox2D::OnUpdate(GameEngine::Timestep ts)
 	GE_PROFILE_FUNCTION();
 
 	// Update
-	{
-		GE_PROFILE_SCOPE("CameraController::OnUpdate");
-		m_CameraController.OnUpdate(ts);
-	}
+	m_CameraController.OnUpdate(ts);
 
 	// Render
 	{

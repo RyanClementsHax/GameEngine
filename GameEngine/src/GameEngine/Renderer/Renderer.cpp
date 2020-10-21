@@ -8,6 +8,8 @@ namespace GameEngine {
 
 	void Renderer::Init()
 	{
+		GE_PROFILE_FUNCTION();
+
 		RenderCommand::Init();
 		Renderer2D::Init();
 	}
