@@ -15,6 +15,8 @@
 
 #include "GameEngine/Core/Log.h"
 
+#include "GameEngine/Debug/Instrumentor.h"
+
 #ifdef GE_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif
