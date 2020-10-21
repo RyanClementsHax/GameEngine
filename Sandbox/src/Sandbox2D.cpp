@@ -24,8 +24,8 @@ void Sandbox2D::OnUpdate(GameEngine::Timestep ts)
 	m_CameraController.OnUpdate(ts);
 
 	// Render
-	GameEngine::RendererCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
-	GameEngine::RendererCommand::Clear();
+	GameEngine::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
+	GameEngine::RenderCommand::Clear();
 
 	GameEngine::Renderer2D::BeginScene(m_CameraController.GetCamera());
 	GameEngine::Renderer2D::DrawQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, { 0.8f, 0.2f, 0.3f, 1.0f });

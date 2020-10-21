@@ -4,7 +4,7 @@
 
 namespace GameEngine {
 
-	class RendererCommand
+	class RenderCommand
 	{
 	public:
 		inline static void Init()

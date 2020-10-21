@@ -140,8 +140,8 @@ public:
 		m_CameraController.OnUpdate(ts);
 
 		// Render
-		GameEngine::RendererCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
-		GameEngine::RendererCommand::Clear();
+		GameEngine::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
+		GameEngine::RenderCommand::Clear();
 
 
 		GameEngine::Renderer::BeginScene(m_CameraController.GetCamera());

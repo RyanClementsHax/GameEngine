@@ -8,7 +8,7 @@ namespace GameEngine {
 
 	void Renderer::Init()
 	{
-		RendererCommand::Init();
+		RenderCommand::Init();
 		Renderer2D::Init();
 	}
 
@@ -19,7 +19,7 @@ namespace GameEngine {
 
 	void Renderer::OnWindowResize(uint32_t width, uint32_t height)
 	{
-		RendererCommand::SetViewport(0, 0, width, height);
+		RenderCommand::SetViewport(0, 0, width, height);
 	}
 
 	void Renderer::BeginScene(OrthographicCamera& camera)
@@ -39,7 +39,7 @@ namespace GameEngine {
 		shader->SetMat4("u_Transform", transform);
 
 		vertexArray->Bind();
-		RendererCommand::DrawIndexed(vertexArray);
+		RenderCommand::DrawIndexed(vertexArray);
 	}
 
 }

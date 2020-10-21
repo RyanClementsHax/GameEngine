@@ -3,7 +3,7 @@
 
 #include "GameEngine/Renderer/VertexArray.h"
 #include "GameEngine/Renderer/Shader.h"
-#include "GameEngine/Renderer/RendererCommand.h"
+#include "GameEngine/Renderer/RenderCommand.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 
@@ -79,7 +79,7 @@ namespace GameEngine {
 		s_Data->TextureShader->SetMat4("u_Transform", transform);
 
 		s_Data->QuadVertexArray->Bind();
-		RendererCommand::DrawIndexed(s_Data->QuadVertexArray);
+		RenderCommand::DrawIndexed(s_Data->QuadVertexArray);
 	}
 
 	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, const Ref<Texture2D>& texture)
@@ -96,7 +96,7 @@ namespace GameEngine {
 		s_Data->TextureShader->SetMat4("u_Transform", transform);
 
 		s_Data->QuadVertexArray->Bind();
-		RendererCommand::DrawIndexed(s_Data->QuadVertexArray);
+		RenderCommand::DrawIndexed(s_Data->QuadVertexArray);
 	}
 
 }

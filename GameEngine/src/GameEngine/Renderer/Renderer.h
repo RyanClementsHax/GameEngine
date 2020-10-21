@@ -1,6 +1,6 @@
 #pragma once
 
-#include "GameEngine/Renderer/RendererCommand.h"
+#include "GameEngine/Renderer/RenderCommand.h"
 
 #include "GameEngine/Renderer/OrthographicCamera.h"
 #include "GameEngine/Renderer/Shader.h"
