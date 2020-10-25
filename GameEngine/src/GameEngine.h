@@ -12,7 +12,7 @@
 
 #include "GameEngine/Core/Input.h"
 #include "GameEngine/Core/KeyCodes.h"
-#include "GameEngine/Core/MouseButtonCodes.h"
+#include "GameEngine/Core/MouseCodes.h"
 #include "GameEngine/Renderer/OrthographicCameraController.h"
 
 #include "GameEngine/ImGui/ImGuiLayer.h"
