@@ -11,6 +11,8 @@
 
 #include "GameEngine/ImGui/ImGuiLayer.h"
 
+int main(int argc, char** argv);
+
 namespace GameEngine {
 
 	class Application
@@ -18,8 +20,6 @@ namespace GameEngine {
 	public:
 		Application();
 		virtual ~Application();
-
-		void Run();
 
 		void OnEvent(Event& e);
 
@@ -30,6 +30,7 @@ namespace GameEngine {
 
 		inline static Application& Get() { return *s_Instance; }
 	private:
+		void Run();
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool OnWindowResize(WindowResizeEvent& e);
 	private:
@@ -41,6 +42,7 @@ namespace GameEngine {
 		float m_LastTimeFrame = 0.0f;
 	private:
 		static Application* s_Instance;
+		friend int ::main(int argc, char** argv);
 	};
 
 	// To be defined in CLIENT
