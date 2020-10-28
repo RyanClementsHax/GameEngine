@@ -1,6 +1,6 @@
 #pragma once
 
-#include "GameEngine/Core/Core.h"
+#include "GameEngine/Core/Base.h"
 
 #ifdef GE_PLATFORM_WINDOWS
 
