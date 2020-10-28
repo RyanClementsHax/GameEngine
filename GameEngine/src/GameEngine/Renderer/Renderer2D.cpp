@@ -106,6 +106,8 @@ namespace GameEngine {
 	void Renderer2D::ShutDown()
 	{
 		GE_PROFILE_FUNCTION();
+
+		delete[] s_Data.QuadVertexBufferBase;
 	}
 
 	void Renderer2D::BeginScene(const OrthographicCamera& camera)
