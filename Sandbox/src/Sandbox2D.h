@@ -20,6 +20,7 @@ private:
 	// Temp
 	GameEngine::Ref<GameEngine::VertexArray> m_SquareVA;
 	GameEngine::Ref<GameEngine::Shader> m_FlatColorShader;
+	GameEngine::Ref<GameEngine::Framebuffer> m_Framebuffer;
 
 	GameEngine::Ref<GameEngine::Texture2D> m_CheckerboardTexture;
 
