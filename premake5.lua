@@ -153,3 +153,55 @@ project "Sandbox"
 		defines "GE_DIST"
 		runtime "Release"
 		optimize "on"
+
+project "GameEngine-Editor"
+	location "GameEngine-Editor"
+	kind "ConsoleApp"
+	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
+
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	files
+	{
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp"
+	}
+
+	includedirs
+	{
+		"GameEngine/vendor/spdlog/include",
+		"GameEngine/src",
+		"GameEngine/vendor",
+		"%{IncludeDir.glm}"
+	}
+
+	links
+	{
+		"GameEngine"
+	}
+
+	filter "system:windows"
+		systemversion "latest"
+
+		defines
+		{
+			"GE_PLATFORM_WINDOWS"
+		}
+		
+	filter "configurations:Debug"
+		defines "GE_DEBUG"
+		runtime "Debug"
+		symbols "on"
+		
+	filter "configurations:Release"
+		defines "GE_RELEASE"
+		runtime "Release"
+		optimize "on"
+		
+	filter "configurations:Dist"
+		defines "GE_DIST"
+		runtime "Release"
+		optimize "on"
