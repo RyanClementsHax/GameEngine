@@ -10,12 +10,9 @@ This is a follow along repository with [The Cherno's YouTube series](https://www
 1. Have fun
 
 ## Getting Started
-Windows is the only platform currently supported, and Visual Studio 2019 is the only development environment that this is tested in.
-
-You can clone the repository to a local destination using git:
-
-`git clone --recursive https://github.com/RyanClementsHax/GameEngine.git`
-
-Make sure that you do a `--recursive` clone to fetch all of the submodules!
-
-Then run scripts/Win-GenProjects.bat to generate project/solution files so this can be opened and built in VS2019
+1. clone the repository with submodules by running `git clone --recursive https://github.com/RyanClementsHax/GameEngine.git`
+    - if the repository was cloned non-recursively, you can clone the submodules after the fact with `git submodule update --init`
+1. make sure you have Visual Studio installed with `Desktop Development with C++`
+    - Windows is the only platform currently supported, and Visual Studio 2019 is the only development environment that this is tested in.
+1. run scripts/Win-GenProjects.bat to generate project/solution files so this can be opened and built in VS2019
+1. Run Sandbox or GameEngine-Editor to start work!
