@@ -10,8 +10,8 @@ namespace GameEngine {
 	{
 	public:
 		Entity() = default;
-		Entity(entt::entity handle, Scene* scene);
-		Entity(const Entity& other) = default;
+		Entity(entt::entity handle, Scene * scene);
+		Entity(const Entity & other) = default;
 
 		template<typename T, typename... Args>
 		T& AddComponent(Args&&... args)
@@ -34,10 +34,10 @@ namespace GameEngine {
 		}
 
 		template<typename T>
-		bool RemoveComponent()
+		void RemoveComponent()
 		{
 			GE_CORE_ASSERT(HasComponent<T>(), "Entity does not have component!");
-			return m_Scene->m_Registry.remove<T>(m_EntityHandle);
+			m_Scene->m_Registry.remove<T>(m_EntityHandle);
 		}
 
 		operator bool() const { return m_EntityHandle != entt::null; }
