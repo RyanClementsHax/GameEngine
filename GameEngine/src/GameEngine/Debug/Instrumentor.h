@@ -27,15 +27,9 @@ namespace GameEngine {
 
 	class Instrumentor
 	{
-	private:
-		std::mutex m_Mutex;
-		InstrumentationSession* m_CurrentSession;
-		std::ofstream m_OutputStream;
 	public:
-		Instrumentor()
-			: m_CurrentSession(nullptr)
-		{
-		}
+		Instrumentor(const Instrumentor&) = delete;
+		Instrumentor(Instrumentor&&) = delete;
 
 		void BeginSession(const std::string& name, const std::string& filepath = "results.json")
 		{
@@ -104,6 +98,15 @@ namespace GameEngine {
 		}
 
 	private:
+		Instrumentor()
+			: m_CurrentSession(nullptr)
+		{
+		}
+
+		~Instrumentor()
+		{
+			EndSession();
+		}
 
 		void WriteHeader()
 		{
@@ -129,7 +132,10 @@ namespace GameEngine {
 				m_CurrentSession = nullptr;
 			}
 		}
-
+	private:
+		std::mutex m_Mutex;
+		InstrumentationSession* m_CurrentSession;
+		std::ofstream m_OutputStream;
 	};
 
 	namespace InstrumentorUtils {
@@ -193,7 +199,7 @@ namespace GameEngine {
 	};
 }
 
-#define GE_PROFILE 0
+#define GE_PROFILE 1
 #if GE_PROFILE
 	// Resolve which function signature macro will be used. Note that this only
 	// is resolved when the (pre)compiler starts, so the syntax highlighting
@@ -218,8 +224,10 @@ namespace GameEngine {
 
 	#define GE_PROFILE_BEGIN_SESSION(name, filepath) ::GameEngine::Instrumentor::Get().BeginSession(name, filepath)
 	#define GE_PROFILE_END_SESSION() ::GameEngine::Instrumentor::Get().EndSession()
-	#define GE_PROFILE_SCOPE(name)  constexpr auto fixedName = ::GameEngine::InstrumentorUtils::CleanupOutputString(name, "__cdecl ");\
-									::GameEngine::InstrumentationTimer timer##__LINE__(fixedName.Data)
+	#define GE_PROFILE_SCOPE_LINE2(name, line) constexpr auto fixedName##line = ::GameEngine::InstrumentorUtils::CleanupOutputString(name, "__cdecl ");\
+				::GameEngine::InstrumentationTimer timer##line(fixedName##line.Data)
+	#define GE_PROFILE_SCOPE_LINE(name, line) GE_PROFILE_SCOPE_LINE2(name, line)
+	#define GE_PROFILE_SCOPE(name) GE_PROFILE_SCOPE_LINE(name, __LINE__)
 	#define GE_PROFILE_FUNCTION() GE_PROFILE_SCOPE(GE_FUNC_SIG)
 #else
 	#define GE_PROFILE_BEGIN_SESSION(name, filepath)
