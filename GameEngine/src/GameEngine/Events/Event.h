@@ -1,7 +1,7 @@
 #pragma once
+#include <functional>
 
-#include "gepch.h"
-
+#include "GameEngine/Debug/Instrumentor.h"
 #include "GameEngine/Core/Base.h"
 
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "gepch.h"
+#include <sstream>
 
 #include "GameEngine/Core/Base.h"
 #include "GameEngine/Events/Event.h"

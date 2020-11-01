@@ -15,23 +15,23 @@ namespace GameEngine {
 	{
 		GE_PROFILE_FUNCTION();
 
-		if (GameEngine::Input::IsKeyPressed(GE_KEY_A))
+		if (GameEngine::Input::IsKeyPressed(Key::A))
 		{
 			m_CameraPosition.x -= cos(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * ts;
 			m_CameraPosition.y -= sin(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * ts;
 		}
-		else if (GameEngine::Input::IsKeyPressed(GE_KEY_D))
+		else if (GameEngine::Input::IsKeyPressed(Key::D))
 		{
 			m_CameraPosition.x += cos(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * ts;
 			m_CameraPosition.y += sin(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * ts;
 		}
 
-		if (GameEngine::Input::IsKeyPressed(GE_KEY_W))
+		if (GameEngine::Input::IsKeyPressed(Key::W))
 		{
 			m_CameraPosition.x += -sin(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * ts;
 			m_CameraPosition.y += cos(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * ts;
 		}
-		else if (GameEngine::Input::IsKeyPressed(GE_KEY_S))
+		else if (GameEngine::Input::IsKeyPressed(Key::S))
 		{
 			m_CameraPosition.x -= -sin(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * ts;
 			m_CameraPosition.y -= cos(glm::radians(m_CameraRotation)) * m_CameraTranslationSpeed * ts;
@@ -39,9 +39,9 @@ namespace GameEngine {
 
 		if (m_Rotation)
 		{
-			if (GameEngine::Input::IsKeyPressed(GE_KEY_Q))
+			if (GameEngine::Input::IsKeyPressed(Key::Q))
 				m_CameraRotation += m_CameraRotationSpeed * ts;
-			else if (GameEngine::Input::IsKeyPressed(GE_KEY_E))
+			else if (GameEngine::Input::IsKeyPressed(Key::E))
 				m_CameraRotation -= m_CameraRotationSpeed * ts;
 
 			if (m_CameraRotation > 180.0f)
