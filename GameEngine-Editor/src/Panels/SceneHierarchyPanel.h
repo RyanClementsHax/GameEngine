@@ -1,7 +1,6 @@
 #pragma once
 
 #include "GameEngine/Core/Base.h"
-#include "GameEngine/Core/Log.h"
 #include "GameEngine/Scene/Scene.h"
 #include "GameEngine/Scene/Entity.h"
 

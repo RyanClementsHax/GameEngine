@@ -18,14 +18,8 @@
 	#define GE_DEBUGBREAK()
 #endif
 
-// TODO: Make this macro able to take in no arguments except condition
-#ifdef GE_ENABLE_ASSERTS
-	#define GE_ASSERT(x, ...) { if(!(x)) { GE_ERROR("Assertion failed: {0}", __VA_ARGS__); GE_DEBUGBREAK(); } }
-	#define GE_CORE_ASSERT(x, ...) { if(!(x)) { GE_CORE_ERROR("Assertion failed: {0}", __VA_ARGS__); GE_DEBUGBREAK(); } }
-#else
-	#define GE_ASSERT(x, ...)
-	#define GE_CORE_ASSERT(x, ...)
-#endif
+#define GE_EXPAND_MACRO(x) x
+#define GE_STRINGIFY_MACRO(x) #x
 
 #define BIT(x) (1 << x)
 
@@ -50,3 +44,6 @@ namespace GameEngine {
 	}
 
 }
+
+#include "GameEngine/Core/Log.h"
+#include "GameEngine/Core/Assert.h"
