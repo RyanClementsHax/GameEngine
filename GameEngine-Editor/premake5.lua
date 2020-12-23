@@ -19,7 +19,8 @@ project "GameEngine-Editor"
 		"%{wks.location}/GameEngine/src",
 		"%{wks.location}/GameEngine/vendor",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.entt}"
+		"%{IncludeDir.entt}",
+		"%{IncludeDir.ImGuizmo}"
 	}
 
 	links
